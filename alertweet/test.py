@@ -2,7 +2,9 @@
 # -*- coding: utf-8 -*-
 
 import tweepy
-from listeners import StdOutListener
+from listeners import Listener
+from actions import StdOutAction
+from queries import MatchAll
 
 from secret import consumer_key, consumer_secret, TOKENS
 
@@ -19,7 +21,7 @@ def main():
     log.info("========================")
 
     # Build listener
-    listener = StdOutListener()
+    listener = Listener(query=MatchAll(), action=StdOutAction())
 
     # Connect to stream
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
