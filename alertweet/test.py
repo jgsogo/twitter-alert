@@ -3,7 +3,7 @@
 
 import tweepy
 from listeners import Listener
-from actions import StdOutAction
+from actions import StdOutAction, DumpPlace
 from queries import MatchAll
 
 from secret import consumer_key, consumer_secret, TOKENS
@@ -21,7 +21,7 @@ def main():
     log.info("========================")
 
     # Build listener
-    listener = Listener(query=MatchAll(), action=StdOutAction())
+    listener = Listener(query=MatchAll(), action=DumpPlace('places.txt'))
 
     # Connect to stream
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
